@@ -4,13 +4,14 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  background-color: red;
 
   .logo-container {
     height: 100%;
     width: 70px;
     padding: 25px;
-    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .nav-links-container {
@@ -19,6 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    background-color: red;
 
     .nav-link {
       padding: 10px 15px;
