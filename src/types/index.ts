@@ -3,3 +3,8 @@ export interface CategoryTypes {
   title: string;
   imageUrl: string;
 }
+export interface UserAuthTypes {
+  uid: string;
+  displayName: string | null;
+  email: string | null;
+}
