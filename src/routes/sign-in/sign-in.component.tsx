@@ -1,3 +1,4 @@
+import { UserAuthTypes } from "../../types";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -5,8 +6,8 @@ import {
 
 const SignIn = () => {
   const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    createUserDocumentFromAuth(user);
+    const { user }: { user: UserAuthTypes } = await signInWithGooglePopup();
+    const userDocRef = await createUserDocumentFromAuth(user);
   };
   return (
     <>
