@@ -1,4 +1,15 @@
+import { useState } from "react";
+
+const defaultFormFields = {
+  displayName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
 const SignUpForm = () => {
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const { displayName, email, password, confirmPassword } = formFields;
   return (
     <div>
       <h1>Sign up with your email and password</h1>
