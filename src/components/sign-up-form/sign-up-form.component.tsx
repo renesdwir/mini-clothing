@@ -33,7 +33,10 @@ const SignUpForm = () => {
         const { user }: { user: UserAuthTypes } = response;
         await createUserDocumentFromAuth(user, { displayName });
       }
-    } catch (error) {
+    } catch (error: any) {
+      if (error.code === "auth/email-already-in-use") {
+        alert("Cannot create user, Email already in use");
+      }
       console.log(error);
     }
   };
