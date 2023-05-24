@@ -30,7 +30,10 @@ provider.setCustomParameters({
 });
 
 const db = getFirestore();
-export const createUserDocumentFromAuth = async (userAuth: UserAuthTypes) => {
+export const createUserDocumentFromAuth = async (
+  userAuth: UserAuthTypes,
+  additionalInformation = {}
+) => {
   const userDocRef = doc(db, "users", userAuth.uid);
   const userSnapshot = await getDoc(userDocRef);
   if (!userSnapshot.exists()) {
@@ -41,6 +44,7 @@ export const createUserDocumentFromAuth = async (userAuth: UserAuthTypes) => {
         displayName,
         email,
         createdAt,
+        ...additionalInformation,
       });
     } catch (error) {
       console.log("error creating the user: ", error);
