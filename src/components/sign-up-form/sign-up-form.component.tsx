@@ -32,6 +32,7 @@ const SignUpForm = () => {
       if (response) {
         const { user }: { user: UserAuthTypes } = response;
         await createUserDocumentFromAuth(user, { displayName });
+        resetFormFields();
       }
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
@@ -39,6 +40,9 @@ const SignUpForm = () => {
       }
       console.log(error);
     }
+  };
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
   };
   return (
     <div>
