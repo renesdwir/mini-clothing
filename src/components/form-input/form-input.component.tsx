@@ -13,12 +13,12 @@ const FormInput: React.FC<FormInputProps> = ({
 
   return (
     <div className="group">
+      <input className="form-input" {...otherProps} />
       {label && (
         <label className={`${hasValue ? "shrink" : ""} form-input-label`}>
           {label}
         </label>
       )}
-      <input className="form-input" {...otherProps} />
     </div>
   );
 };
