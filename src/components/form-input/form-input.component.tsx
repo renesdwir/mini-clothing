@@ -1,5 +1,5 @@
 import React, { ReactNode, InputHTMLAttributes } from "react";
-
+import "./form-input.styles.scss";
 interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: ReactNode;
 }
