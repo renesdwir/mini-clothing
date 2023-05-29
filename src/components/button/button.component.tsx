@@ -1,3 +1,5 @@
+import "./button.styles.scss";
+
 type ButtonType = "google" | "inverted";
 
 const BUTTON_TYPE_CLASSES: Record<ButtonType, string> = {
@@ -5,12 +7,14 @@ const BUTTON_TYPE_CLASSES: Record<ButtonType, string> = {
   inverted: "inverted",
 };
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  buttonType: ButtonType;
+  buttonType?: ButtonType;
 }
 const Button = ({ children, buttonType, ...otherProps }: ButtonProps) => {
   return (
     <button
-      className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
+      className={`button-container ${
+        buttonType ? BUTTON_TYPE_CLASSES[buttonType] : ""
+      }`}
       {...otherProps}
     >
       {children}
