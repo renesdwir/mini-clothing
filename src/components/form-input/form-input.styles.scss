@@ -26,9 +26,14 @@ $main-color: black;
 
     &:focus {
       outline: none;
+      background-color: #e4edfc;
+    }
+    &.bckcolor {
+      background-color: #e4edfc;
     }
 
     &:focus ~ .form-input-label {
+      //if form input focus
       @include shrinkLabel();
     }
   }
@@ -48,6 +53,7 @@ $main-color: black;
     transition: 300ms ease all;
 
     &.shrink {
+      //if form input has value
       @include shrinkLabel();
     }
   }

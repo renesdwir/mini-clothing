@@ -4,16 +4,16 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: ReactNode;
 }
 
-const FormInput: React.FC<FormInputProps> = ({
-  label,
-  value,
-  ...otherProps
-}) => {
-  const hasValue = typeof value === "string" && value.length > 0;
+const FormInput: React.FC<FormInputProps> = ({ label, ...otherProps }) => {
+  const hasValue =
+    typeof otherProps.value === "string" && otherProps.value.length > 0;
 
   return (
     <div className="group">
-      <input className="form-input" {...otherProps} />
+      <input
+        className={`form-input ${hasValue ? "bckcolor" : ""}`}
+        {...otherProps}
+      />
       {label && (
         <label className={`${hasValue ? "shrink" : ""} form-input-label`}>
           {label}
