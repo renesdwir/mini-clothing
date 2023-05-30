@@ -6,6 +6,8 @@ import {
 import { UserAuthTypes } from "../../types";
 import FormInput from "../form-input/form-input.component";
 import "./sign-up-form.styles.scss";
+import Button from "../button/button.component";
+
 const defaultFormFields = {
   displayName: "",
   email: "",
@@ -20,6 +22,9 @@ const SignUpForm = () => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -31,11 +36,13 @@ const SignUpForm = () => {
         email,
         password
       );
+      console.log(response, email, password);
       if (response) {
         const { user }: { user: UserAuthTypes } = response;
         await createUserDocumentFromAuth(user, { displayName });
         resetFormFields();
       }
+      console.log(formFields);
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
         alert("Cannot create user, Email already in use");
@@ -43,9 +50,7 @@ const SignUpForm = () => {
       console.log(error);
     }
   };
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
+
   return (
     <div className="sign-up-container">
       <h2>Don't have an account?</h2>
@@ -86,7 +91,9 @@ const SignUpForm = () => {
           onChange={handleChange}
           value={confirmPassword}
         />
-        <button type="submit">Sign Up</button>
+        <Button buttonType="inverted" type="submit">
+          Sign Up
+        </Button>
       </form>
     </div>
   );
