@@ -8,3 +8,9 @@ export interface UserAuthTypes {
   displayName: string | null;
   email: string | null;
 }
+export interface ProductTypes {
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+}
