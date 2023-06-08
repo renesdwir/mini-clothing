@@ -5,7 +5,7 @@ import ProductCard from "../../components/product-card/product-card.component";
 const Shop = () => {
   const { products } = useContext(ProductsContext);
   return (
-    <div>
+    <div className="products-container">
       Shop Data
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
