@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface CategoryTypes {
   id: number;
   title: string;
@@ -13,4 +15,7 @@ export interface ProductTypes {
   name: string;
   imageUrl: string;
   price: number;
+}
+export interface ProviderProps {
+  children: ReactNode;
 }
