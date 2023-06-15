@@ -19,3 +19,11 @@ export interface ProductTypes {
 export interface ProviderProps {
   children: ReactNode;
 }
+
+export interface CartItemTypes {
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+  quantity: number;
+}
