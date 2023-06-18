@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 const ProductCard = ({ product }: { product: ProductTypes }) => {
   const { imageUrl, name, price } = product;
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, setIsCartOpen } = useContext(CartContext);
 
   const handleAddToCart = () => {
     const cartItem: CartItemTypes = {
@@ -17,6 +17,7 @@ const ProductCard = ({ product }: { product: ProductTypes }) => {
       quantity: 0,
     };
     addToCart(cartItem);
+    setIsCartOpen(true);
   };
 
   return (
