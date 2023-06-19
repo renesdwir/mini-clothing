@@ -15,6 +15,7 @@ interface CartContextType {
   cartCount: number;
   changeQuantity: (itemId: number, command: "dec" | "inc") => void;
   removeCartItem: (itemId: number) => void;
+  cartTotal: number;
 }
 
 const validationAddToCart = (
@@ -69,12 +70,14 @@ export const CartContext = createContext<CartContextType>({
   cartCount: 0,
   changeQuantity: () => {},
   removeCartItem: () => {},
+  cartTotal: 0,
 });
 
 export const CartProvider = ({ children }: ProviderProps) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItemTypes[]>([]);
   const [cartCount, setCartCount] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   const addToCart = (item: CartItemTypes) => {
     setCartItems(validationAddToCart(cartItems, item));
@@ -93,6 +96,15 @@ export const CartProvider = ({ children }: ProviderProps) => {
     );
   }, [cartItems]);
 
+  useEffect(() => {
+    setCartTotal(
+      cartItems.reduce(
+        (total, cartItem) => total + cartItem.price * cartItem.quantity,
+        0
+      )
+    );
+  }, [cartItems]);
+
   const value = {
     isCartOpen,
     setIsCartOpen,
@@ -101,6 +113,7 @@ export const CartProvider = ({ children }: ProviderProps) => {
     cartCount,
     changeQuantity,
     removeCartItem,
+    cartTotal,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
