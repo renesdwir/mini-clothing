@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import PRODUCTS from "../shop-data.json";
+import SHOP_DATA from "../shop-data";
 import { ProductTypes } from "../types";
 
 interface ProductProviderProps {
@@ -14,7 +14,7 @@ export const ProductsContext = createContext<ProductContextValue>({
 });
 
 export const ProductsProvider = ({ children }: ProductProviderProps) => {
-  const [products, setProducts] = useState<ProductTypes[]>(PRODUCTS);
+  const [products, setProducts] = useState<ProductTypes[]>([]);
   const value = { products };
   return (
     <ProductsContext.Provider value={value}>
