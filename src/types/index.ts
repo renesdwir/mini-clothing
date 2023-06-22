@@ -10,7 +10,7 @@ export interface UserAuthTypes {
   displayName: string | null;
   email: string | null;
 }
-export interface ProductTypes {
+export interface CategoryMapTypes {
   id: number;
   name: string;
   imageUrl: string;
