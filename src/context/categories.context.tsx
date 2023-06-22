@@ -1,5 +1,4 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { CategoriesMapTypes } from "../types";
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils";
 
 interface CategoriesProviderProps {
@@ -20,6 +19,7 @@ export const CategoriesProvider = ({ children }: CategoriesProviderProps) => {
     const getCategoriesMap = async () => {
       const categoryMap = await getCategoriesAndDocuments();
       console.log(categoryMap);
+      setCategoriesMap(categoryMap);
     };
     getCategoriesMap();
   }, []);
