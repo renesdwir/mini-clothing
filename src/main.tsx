@@ -6,18 +6,18 @@ import "./index.scss";
 
 import App from "./App.tsx";
 import { UserProvider } from "./context/user.context";
-import { ProductsProvider } from "./context/product.context.tsx";
+import { CategoriesProvider } from "./context/categories.context.tsx";
 import { CartProvider } from "./context/cart.context.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <ProductsProvider>
+        <CategoriesProvider>
           <CartProvider>
             <App />
           </CartProvider>
-        </ProductsProvider>
+        </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
