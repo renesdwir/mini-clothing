@@ -1,15 +1,18 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils";
+import { CategoryMapTypes } from "../types";
 
 interface CategoriesProviderProps {
   children: ReactNode;
 }
-
+interface CategoriesMapTypes {
+  [title: string]: CategoryMapTypes[];
+}
 interface CategoryContextValue {
-  categoriesMap: {};
+  categoriesMap: CategoriesMapTypes;
 }
 export const CategoriesContext = createContext<CategoryContextValue>({
-  categoriesMap: {},
+  categoriesMap: {} as CategoriesMapTypes,
 });
 
 export const CategoriesProvider = ({ children }: CategoriesProviderProps) => {
