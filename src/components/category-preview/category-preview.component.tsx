@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CategoryMapTypes } from "../../types";
 import ProductCard from "../product-card/product-card.component";
 import "./category-preview.styles.scss";
@@ -9,7 +10,9 @@ const CategoryPreview = ({ title, products }: CategoryPreviewProps) => {
   return (
     <div className="category-preview-container">
       <h2>
-        <span>{title}</span>
+        <Link className="title" to={title}>
+          {title}
+        </Link>
       </h2>
       <div className="preview">
         {products
