@@ -1,5 +1,9 @@
 import { CategoryTypes } from "../../types";
-import "./directory-item.styles.scss";
+import {
+  BackgroundImage,
+  Body,
+  DirectoryItemContainer,
+} from "./directory-item.styles";
 
 interface DirectoryItemProps {
   category: CategoryTypes;
@@ -8,18 +12,13 @@ interface DirectoryItemProps {
 const DirectoryItem = ({ category }: DirectoryItemProps) => {
   const { title, imageUrl } = category;
   return (
-    <div className="directory-item-container">
-      <div
-        className="background-image"
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-        }}
-      />
-      <div className="directory-item-body-container">
+    <DirectoryItemContainer>
+      <BackgroundImage imgUrl={imageUrl} />
+      <Body>
         <h2>{title}</h2>
         <p>Shop Now</p>
-      </div>
-    </div>
+      </Body>
+    </DirectoryItemContainer>
   );
 };
 export default DirectoryItem;
