@@ -25,14 +25,16 @@ export const Body = styled.div`
 
   h2 {
     font-weight: bold;
-    margin: 0 6px 0;
     font-size: 22px;
+    margin: 0;
     color: #4a4a4a;
+    text-transform: uppercase;
   }
 
   p {
+    margin: 0;
     font-weight: lighter;
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
