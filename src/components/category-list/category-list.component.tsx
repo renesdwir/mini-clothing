@@ -1,18 +1,41 @@
 import { CategoryTypes } from "../../types";
 import DirectoryItem from "../directory-item/directory-item.component";
-import "./category-list.styles.scss";
+import { CategoriesContainer } from "./category-list.styles";
 
-interface CategoryListProps {
-  categories: CategoryTypes[];
-}
-const CategoryList = (props: CategoryListProps) => {
-  const { categories } = props;
+const categories = [
+  {
+    id: 1,
+    title: "hats",
+    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+  },
+  {
+    id: 2,
+    title: "jackets",
+    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+  },
+  {
+    id: 3,
+    title: "sneakers",
+    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+  },
+  {
+    id: 4,
+    title: "womens",
+    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+  },
+  {
+    id: 5,
+    title: "mens",
+    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+  },
+];
+const CategoryList = () => {
   return (
-    <div className="categories-container">
-      {categories.map((category) => (
+    <CategoriesContainer>
+      {categories.map((category: CategoryTypes) => (
         <DirectoryItem key={category.id} category={category} />
       ))}
-    </div>
+    </CategoriesContainer>
   );
 };
 export default CategoryList;
