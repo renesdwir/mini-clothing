@@ -1,10 +1,10 @@
-import { CartItemTypes, ProductTypes } from "../../types";
+import { CartItemTypes, CategoryMapTypes } from "../../types";
 import Button from "../button/button.component";
 import "./product-card.styles.scss";
 import { CartContext } from "../../context/cart.context";
 import { useContext } from "react";
 
-const ProductCard = ({ product }: { product: ProductTypes }) => {
+const ProductCard = ({ product }: { product: CategoryMapTypes }) => {
   const { imageUrl, name, price } = product;
   const { addToCart, setIsCartOpen } = useContext(CartContext);
 
