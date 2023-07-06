@@ -72,15 +72,19 @@ const INITIAL_STATE = {
   cartCount: 0,
   cartTotal: 0,
 };
+export const CART_ACTION_TYPES = {
+  SET_CART_ITEMS: "SET_CART_ITEMS",
+  SET_CART_OPEN: "SET_CART_OPEN",
+};
 const cartReducer = (state: any, action: any) => {
   const { type, payload } = action;
   switch (type) {
-    case "SET_CART_ITEMS":
+    case CART_ACTION_TYPES.SET_CART_ITEMS:
       return {
         ...state,
         ...payload,
       };
-    case "SET_CART_OPEN":
+    case CART_ACTION_TYPES.SET_CART_OPEN:
       return {
         ...state,
         isCartOpen: payload,
@@ -122,7 +126,7 @@ export const CartProvider = ({ children }: ProviderProps) => {
       0
     );
     dispatch({
-      type: "SET_CART_ITEMS",
+      type: CART_ACTION_TYPES.SET_CART_ITEMS,
       payload: {
         cartCount: cartCount,
         cartItems: newCartItems,
@@ -131,7 +135,7 @@ export const CartProvider = ({ children }: ProviderProps) => {
     });
   };
   const setIsCartOpen = (bool: boolean) => {
-    dispatch({ type: "SET_CART_OPEN", payload: bool });
+    dispatch({ type: CART_ACTION_TYPES.SET_CART_OPEN, payload: bool });
   };
 
   const value = {
