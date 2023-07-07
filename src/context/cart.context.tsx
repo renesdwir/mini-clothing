@@ -115,16 +115,17 @@ export const CartProvider = ({ children }: ProviderProps) => {
   };
 
   const updateCartItemsReducer = (newCartItems: any) => {
-    const cartCount = cartItems.reduce(
+    const cartCount = newCartItems.reduce(
       (total: number, cartItem: any) => total + cartItem.quantity,
       0
     );
 
-    const cartTotal = cartItems.reduce(
+    const cartTotal = newCartItems.reduce(
       (total: number, cartItem: any) =>
         total + cartItem.price * cartItem.quantity,
       0
     );
+
     dispatch({
       type: CART_ACTION_TYPES.SET_CART_ITEMS,
       payload: {
