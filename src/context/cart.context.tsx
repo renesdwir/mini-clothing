@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 import { CartItemTypes, ProviderProps } from "../types";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 interface CartContextType {
   isCartOpen: boolean;
@@ -126,17 +127,16 @@ export const CartProvider = ({ children }: ProviderProps) => {
       0
     );
 
-    dispatch({
-      type: CART_ACTION_TYPES.SET_CART_ITEMS,
-      payload: {
+    dispatch(
+      createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
         cartCount: cartCount,
         cartItems: newCartItems,
         cartTotal: cartTotal,
-      },
-    });
+      })
+    );
   };
   const setIsCartOpen = (bool: boolean) => {
-    dispatch({ type: CART_ACTION_TYPES.SET_CART_OPEN, payload: bool });
+    dispatch(createAction(CART_ACTION_TYPES.SET_CART_OPEN, bool));
   };
 
   const value = {
