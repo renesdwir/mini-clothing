@@ -20,7 +20,6 @@ const Navigation = () => {
     await signOutUser();
     setCurrentUser(null);
   };
-  console.log(currentUser);
   return (
     <>
       <NavigationContainer>
