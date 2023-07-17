@@ -8,17 +8,21 @@ import App from "./App.tsx";
 import { UserProvider } from "./context/user.context";
 import { CategoriesProvider } from "./context/categories.context.tsx";
 import { CartProvider } from "./context/cart.context.tsx";
+import { Provider } from "react-redux";
+import { store } from "./store/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        {/* <CategoriesProvider> */}
-        <CartProvider>
-          <App />
-        </CartProvider>
-        {/* </CategoriesProvider> */}
-      </UserProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <UserProvider>
+          {/* <CategoriesProvider> */}
+          <CartProvider>
+            <App />
+          </CartProvider>
+          {/* </CategoriesProvider> */}
+        </UserProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
