@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useContext } from "react";
 import CrwnLogo from "../../assets/crown.svg";
 import { UserContext } from "../../context/user.context";
