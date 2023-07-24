@@ -4,10 +4,12 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import { CategoriesContext } from "../../context/categories.context";
 import { CategoryMapTypes } from "../../types";
 import ProductCard from "../../components/product-card/product-card.component";
+import { useSelector } from "react-redux";
+import { getCategoriesMap } from "../../store/categories/category.selector";
 
 const Category = () => {
   const { category } = useParams();
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useSelector(getCategoriesMap);
   const [products, setProducts] = useState<CategoryMapTypes[]>();
 
   useEffect(() => {
