@@ -6,12 +6,14 @@ import {
   StyledName,
   StyledPrice,
 } from "./product-card.styles";
-import { CartContext } from "../../context/cart.context";
-import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, setIsCartOpen } from "../../store/cart/cart.action";
+import { getCartItemsData } from "../../store/cart/cart.selector";
 
 const ProductCard = ({ product }: { product: CategoryMapTypes }) => {
+  const dispatch = useDispatch();
   const { imageUrl, name, price } = product;
-  const { addToCart, setIsCartOpen } = useContext(CartContext);
+  const cartItems = useSelector(getCartItemsData);
 
   const handleAddToCart = () => {
     const cartItem: CartItemTypes = {
@@ -21,8 +23,8 @@ const ProductCard = ({ product }: { product: CategoryMapTypes }) => {
       price: product.price,
       quantity: 0,
     };
-    addToCart(cartItem);
-    setIsCartOpen(true);
+    dispatch(addToCart(cartItems, cartItem));
+    dispatch(setIsCartOpen(true));
   };
 
   return (

@@ -39,7 +39,6 @@ const SignUpForm = () => {
         email,
         password
       );
-      console.log(response, email, password);
       if (response) {
         const { user }: { user: UserAuthTypes } = response;
         await createUserDocumentFromAuth(user, { displayName });
