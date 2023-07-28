@@ -1,25 +1,25 @@
-import { createStore, applyMiddleware } from "redux";
-// import logger from "redux-logger";
-import { combineReducers } from "redux";
-import { userReducer } from "./user/user.reducer";
-import { categoriesReducer } from "./categories/category.reducer";
-import { cartReducer } from "./cart/cart.reducer";
+import { createStore, applyMiddleware, Middleware } from "redux";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { rootReducer } from "./root-reducer";
+import { logger } from "./middleware/logger";
+import thunk from "redux-thunk";
 
-const logger = (store: any) => (next: any) => (action: any) => {
-  if (!action.payload) {
-    return next(action);
-  }
-  console.log("type", action.type);
-  console.log("payload", action.payload);
-  console.log("currentState", store.getState());
-  next(action);
-  console.log("nextState", store.getState());
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["cart"],
 };
+let middleWares: Middleware[] = [];
 
-export const rootReducer = combineReducers({
-  user: userReducer,
-  categories: categoriesReducer,
-  cart: cartReducer,
-});
+if (process.env.NODE_ENV !== "production") {
+  middleWares.push(logger);
+  middleWares.push(thunk);
+}
 
-export const store = createStore(rootReducer, applyMiddleware(logger));
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+export const store = createStore(
+  persistedReducer,
+  applyMiddleware(...middleWares)
+);
+export const persistor = persistStore(store);
