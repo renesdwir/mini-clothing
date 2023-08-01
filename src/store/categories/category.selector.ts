@@ -31,7 +31,6 @@ export const getCategoriesMap = createSelector(
 export const getIsLoadingCategories = createSelector(
   getCategoriesState,
   (categoriesState) => {
-    console.log(categoriesState);
     return categoriesState.isLoading;
   }
 );
